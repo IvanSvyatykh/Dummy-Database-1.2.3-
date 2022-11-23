@@ -1,0 +1,14 @@
+{
+"name": "Person",
+  "columns": [
+    {
+      "name": "id",
+      "type": "int",
+      "isPrimary": true
+    },
+    {
+      "name": "FirstName",
+      "type": "string"
+    }
+  ]
+}

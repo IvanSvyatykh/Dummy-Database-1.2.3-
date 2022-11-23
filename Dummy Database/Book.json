@@ -1,0 +1,35 @@
+{
+  "name": "Library",
+  "columns": [
+    {
+      "name": "id",
+      "type": "int",
+      "isPrimary": true
+    },
+    {
+      "name": "bookName",
+      "type": "string",
+      "isPrimary": false
+    },
+    {
+      "name": "AuthorName",
+      "type": "string",
+      "isPrimary": false
+    },
+    {
+      "name": "pubicationYear",
+      "type": "string",
+      "isPrimary": false
+    },
+    {
+      "name": "numberOfCase",
+      "type": "int",
+      "isPrimary": false
+    },
+    {
+      "name": "numberOfShelf",
+      "type": "int",
+      "isPrimary": false
+    }
+  ]
+}
