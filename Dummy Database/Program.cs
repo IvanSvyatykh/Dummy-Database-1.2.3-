@@ -184,7 +184,18 @@ namespace Database
                 }
             }
         }
-        static void WriteTableForSurvey(List<Person> people, List<Book> books, int legthOfLine, int maxAuthor, int maxBookName, int maxReader)
+        static void WriteTableForSurvey(Person people, Book book, int legthOfLine, int maxAuthor, int maxBookName, int maxReader , ref int Y)
+        {        
+            for (int i = 0; i < 1; i++)
+            {
+                Separator(legthOfLine);
+                Y++;
+                CreateLine(book.Name, book.AuthorName, people.ReaderName, maxAuthor, maxBookName, maxReader, Y);
+                Console.WriteLine();
+                Y++;
+            }
+        }
+        static void WriteData(List<PersonsBook> personsBooks, List<Book> books , List<Person> people , int legthOfLine, int maxAuthor, int maxBookName, int maxReader)
         {
             int Y = 0;
             for (int i = 0; i < 1; i++)
@@ -195,13 +206,33 @@ namespace Database
                 Console.WriteLine();
                 Y++;
             }
-            for (int i = 0; i < people.Count; i++)
+
+            for (int i = 0; i < personsBooks.Count; i++)
             {
-                Separator(legthOfLine);
-                Y++;
-                CreateLine(books[i].Name, books[i].AuthorName, people[i].ReaderName, maxAuthor, maxBookName, maxReader, Y);
-                Console.WriteLine();
-                Y++;
+                int personId;
+                int bookId;
+
+                personId = personsBooks[i].PersonId;
+                bookId=personsBooks[i].BookId;
+                
+                for (int j = 0; j < people.Count; j++)
+                {
+                    if (people[j].Id == personId)
+                    {
+                        personId = j;
+                        break;
+                    }
+                }
+
+                for (int j = 0; j < books.Count; j++)
+                {
+                    if (books[j].Id == bookId)
+                    {
+                        bookId = j;
+                        break;
+                    }
+                }
+                WriteTableForSurvey(people[personId], books[bookId],legthOfLine,maxAuthor,maxBookName, maxReader , ref Y);
             }
             Separator(legthOfLine);
         }
@@ -229,7 +260,7 @@ namespace Database
 
             int leghtOfLine = maxAuthor + maxReader + maxBookName;
 
-            WriteTableForSurvey(people, books, leghtOfLine, maxAuthor, maxBookName, maxReader);
+            WriteData(personsBooks, books, people, leghtOfLine, maxAuthor, maxBookName, maxReader);
         }
     }
 }
