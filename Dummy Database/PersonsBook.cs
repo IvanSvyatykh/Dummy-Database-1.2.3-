@@ -1,6 +1,6 @@
 ﻿namespace Database
 {
-    class PersonsBook
+    public class PersonsBook
     {
         public int BookId { get;  set; }
         public int PersonId { get;  set; }
