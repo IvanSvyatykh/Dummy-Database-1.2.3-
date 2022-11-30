@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 
 namespace Database
 {
@@ -6,7 +7,9 @@ namespace Database
     {
         public int BookId { get;  set; }
         public int PersonId { get;  set; }
-        public string DateOfGetting { get;  set; }
-        public string DateOfReturn { get;  set; }
+        public DateTime DateOfGetting { get;  set; }
+        public DateTime DateOfReturn { get;  set; }
+
+        
     }
 }

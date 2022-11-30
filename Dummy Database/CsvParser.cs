@@ -7,6 +7,7 @@ namespace Dummy_Database
 {
     public class CsvParser
     {
+        
         public static List<Person> CsvParsePerson(string path, List<Person> people, ref int maxReader, List<string> listForPersonId)
         {
             int count = 0;
@@ -151,8 +152,15 @@ namespace Dummy_Database
                         Console.ReadKey();
                         throw new Exception("Id номер человека должен быть целым числом, проверьте корректность файла");
                     }
-                    data.DateOfGetting = splitted[2];
-                    data.DateOfReturn = splitted[3];
+                    data.DateOfGetting = DateTime.Parse(splitted[2]);
+                    data.DateOfReturn = DateTime.Parse(splitted[3]);
+                    if(data.DateOfGetting>data.DateOfReturn)
+                    {
+                        Console.WriteLine("Ошибка дата взяти книги не может быть позже даты возвращения");
+                        Console.WriteLine($"Ошибка в файле {path} в  {count} строке");
+                        Console.ReadKey();
+                        throw new Exception("Ошибка дата взяти книги не может быть позже даты возвращения");
+                    }
                     personsBooks.Add(data);
                     count++;
                 }
