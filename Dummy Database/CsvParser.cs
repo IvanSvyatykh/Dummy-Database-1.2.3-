@@ -34,7 +34,7 @@ namespace Dummy_Database
                         Console.WriteLine();
                         Console.WriteLine($"Ошибка в файле {path}  в {count} строке");
                         Console.ReadKey();
-                        throw new Exception("Id номер должен быть целым числом, проверьте корректность файла");
+                        throw new ArgumentException("Id номер должен быть целым числом, проверьте корректность файла");
                     }
                     person.ReaderName = splitted[1];
                     maxReader = Math.Max(maxReader, splitted[1].Length);
@@ -45,7 +45,7 @@ namespace Dummy_Database
                     Console.WriteLine("Количество данных в каждой строке файла person.csv должно быть равно 2, проверьте коррекность ввода");
                     Console.WriteLine($"Ошибка в файле {path}  в {count} строке");
                     Console.ReadKey();
-                    throw new Exception("Количество данных в каждой строке файла person.csv должно быть равно 2, проверьте коррекность ввода");
+                    throw new ArgumentException("Количество данных в каждой строке файла person.csv должно быть равно 2, проверьте коррекность ввода");
                 }
                 count++;
             }
@@ -77,7 +77,7 @@ namespace Dummy_Database
                         Console.WriteLine();
                         Console.WriteLine($"Ошибка в файле {path}  в {count} строке");
                         Console.ReadKey();
-                        throw new Exception("Id номер должен быть целым числом, проверьте корректность файла");
+                        throw new ArgumentException("Id номер должен быть целым числом, проверьте корректность файла");
                     }
                     book.Name = splitted[1];
                     maxBookName = Math.Max(maxBookName, splitted[1].Length);
@@ -93,7 +93,7 @@ namespace Dummy_Database
                         Console.WriteLine();
                         Console.WriteLine($"Ошибка в файле {path}  в {count} строке");
                         Console.ReadKey();
-                        throw new Exception("Год публикации должен быть целым числом, проверьте корректность файла");
+                        throw new ArgumentException("Год публикации должен быть целым числом, проверьте корректность файла");
                     }
                     book.Case = int.Parse(splitted[4]);
                     book.Shelf = int.Parse(splitted[5]);
@@ -138,7 +138,7 @@ namespace Dummy_Database
                         Console.WriteLine("Id номер книги должен быть целым числом, проверьте корректность файла");
                         Console.WriteLine($"Ошибка в файле {path} в  {count} строке");
                         Console.ReadKey();
-                        throw new Exception("Id номер книги должен быть целым числом, проверьте корректность файла");
+                        throw new ArgumentException("Id номер книги должен быть целым числом, проверьте корректность файла");
                     }
                     if (int.TryParse(splitted[1], out num))
                     {
@@ -159,7 +159,7 @@ namespace Dummy_Database
                         Console.WriteLine("Ошибка дата взяти книги не может быть позже даты возвращения");
                         Console.WriteLine($"Ошибка в файле {path} в  {count} строке");
                         Console.ReadKey();
-                        throw new Exception("Ошибка дата взяти книги не может быть позже даты возвращения");
+                        throw new ArgumentException("Ошибка дата взяти книги не может быть позже даты возвращения");
                     }
                     personsBooks.Add(data);
                     count++;
