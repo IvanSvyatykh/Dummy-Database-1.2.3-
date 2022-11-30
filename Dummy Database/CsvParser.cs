@@ -7,7 +7,7 @@ namespace Dummy_Database
 {
     public class CsvParser
     {
-        public static List<Person> CsvParserForPerson(string path, List<Person> people, ref int maxReader, List<string> listForPersonId)
+        public static List<Person> CsvParsePerson(string path, List<Person> people, ref int maxReader, List<string> listForPersonId)
         {
             int count = 0;
             foreach (string line in File.ReadLines(path))
@@ -49,7 +49,7 @@ namespace Dummy_Database
             }
             return people;
         }
-        public static List<Book> CsvParserForBook(string path, List<Book> books, ref int maxAuthor, ref int maxBookName, List<string> listForBookId)
+        public static List<Book> CsvParseBook(string path, List<Book> books, ref int maxAuthor, ref int maxBookName, List<string> listForBookId)
         {
             int count = 0;
             foreach (string line in File.ReadLines(path))
@@ -107,7 +107,7 @@ namespace Dummy_Database
 
             return books;
         }
-        public static List<PersonsBook> CsvParserForPersonsBook(string path, List<PersonsBook> personsBooks, ref List<string> listForBookId, ref List<string> listForPersonId)
+        public static List<PersonsBook> CsvParsePersonsBook(string path, List<PersonsBook> personsBooks, ref List<string> listForBookId, ref List<string> listForPersonId)
         {
             int count = 0;
 

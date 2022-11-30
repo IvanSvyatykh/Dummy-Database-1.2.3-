@@ -1,19 +1,16 @@
 ﻿using Database;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Dummy_Database
 {
     public class WriterData
     {
-        static void WriteTableForSurvey(Person people, Book book, int legthOfLine, int maxAuthor, int maxBookName, int maxReader, ref int Y)
+        static void WriteTable(Person people, Book book, int legthOfLine, int maxAuthor, int maxBookName, int maxReader, ref int Y)
         {
             for (int i = 0; i < 1; i++)
             {
-                Separator(legthOfLine);
+                EndLine(legthOfLine);
                 Y++;
                 CreateLine(book.Name, book.AuthorName, people.ReaderName, maxAuthor, maxBookName, maxReader, Y);
                 Console.WriteLine();
@@ -24,8 +21,8 @@ namespace Dummy_Database
         {
             int Y = 0;
             for (int i = 0; i < 1; i++)
-            {
-                Separator(legthOfLine);
+            {              
+                EndLine(legthOfLine);
                 Y++;
                 CreateLine("Название", "Автор", "Имя читателя", maxAuthor, maxBookName, maxReader, Y);
                 Console.WriteLine();
@@ -57,12 +54,13 @@ namespace Dummy_Database
                         break;
                     }
                 }
-                WriteTableForSurvey(people[personId], books[bookId], legthOfLine, maxAuthor, maxBookName, maxReader, ref Y);
+                WriteTable(people[personId], books[bookId], legthOfLine, maxAuthor, maxBookName, maxReader, ref Y);
             }
-            Separator(legthOfLine);
+            EndLine(legthOfLine);
         }
         static void CreateLine(string bookName, string author, string readerName, int maxAuthor, int maxBookName, int maxReader, int Y)
         {
+            //Метод делает "линию" из данных переданных для вывода
             int X = 0;
             Console.SetCursorPosition(X, Y);
             Console.Write($"|{bookName}");
@@ -76,8 +74,9 @@ namespace Dummy_Database
             Console.SetCursorPosition(X, Y);
             Console.Write("|");
         }
-        static void Separator(int lengthOfLine)
+        static void EndLine(int lengthOfLine)
         {
+            //Метод создает линию для разделения данных
             int separatorsCapacity = 5;
             int lengthOfdate = 0;
             for (int i = 1; i < (separatorsCapacity + lengthOfLine + lengthOfdate * 2); i++)
