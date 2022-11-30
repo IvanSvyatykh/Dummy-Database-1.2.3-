@@ -10,7 +10,7 @@ namespace Database
         static void Main()
         {
             string NameProject = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName;//Берем общий путь для всех файлов, непривязанный к компьютеру
-            string personPath = NameProject + "\\Person.csv";//
+            string personPath = NameProject + "\\Person.csv";
             string booksPath = NameProject + "\\Book.csv";
             string personsBookPath = NameProject + "\\PersonsBooks.csv";
 
@@ -25,10 +25,9 @@ namespace Database
             List<string> listForBookId = new List<string>();
             List<string> listForPersonId = new List<string>();
 
-            personsBooks = CsvParser.CsvParserForPersonsBook(personsBookPath, personsBooks, ref listForBookId, ref listForPersonId);
-            people = CsvParser.CsvParserForPerson(personPath, people, ref maxReader, listForPersonId);
-            books = CsvParser.CsvParserForBook(booksPath, books, ref maxAuthor, ref maxBookName, listForBookId);
-         
+            personsBooks = CsvParser.CsvParsePersonsBook(personsBookPath, personsBooks, ref listForBookId, ref listForPersonId);
+            people = CsvParser.CsvParsePerson(personPath, people, ref maxReader, listForPersonId);
+            books = CsvParser.CsvParseBook(booksPath, books, ref maxAuthor, ref maxBookName, listForBookId); 
 
             int leghtOfLine = maxAuthor + maxReader + maxBookName;
 
